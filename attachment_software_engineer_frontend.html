@@ -17,6 +17,8 @@
 	<link href="https://uat.telrcdn.com/frameworks/bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 	<link href="https://uat.telrcdn.com/css/pp2_common_new_ui.css" rel="stylesheet">
 	<link href="https://uat-secure.telrdev.com/css/telr/pp2_new_ui.css" rel="stylesheet">
+	<link href="assets/css/input-style.css" rel="stylesheet">
+	<link href="assets/css/style.css" rel="stylesheet">
 
 	<!--[if lt IE 9]>
 	<script src="https://uat.telrcdn.com/frameworks/html5shiv/html5shiv.min.js"></script>
@@ -424,18 +426,12 @@
 	</form>
 	<div class="container">
 		<div class="container_overlay"></div>
-		<div class="content_header">
+		<div class="content_header mt-3">
 			<div class="jumbotron">
 				<h1>
 					<span class="tName">T<span class="tInner">elr Secure Payments</span></span>
 				</h1>
 				<p class="mName3"> TelrDev</p>
-				<hr>
-				<p id="currency" class="amount">
-					Total : AED <span id="pay_total">1,000.00</span>
-				</p>
-				<br>
-				<span class="description">Description: My description</span>
 				<div class="shield_safe_secure" align="right">
 					<img class="shield_1" src="https://uat-secure.telrdev.com/cdn/images/telr/shield_1.png">
 					<span class="safe_and_secure">100% Safe and Secure Payments</span>
@@ -444,42 +440,76 @@
 		</div> <!-- content_header -->
 
 		<div class="content_body">
-			<div class="panel-group" id="convfees_static_info">
-				<div class="panel panel-info">
-					<div class="panel-heading">
-						<h4 class="panel-title"><span class="icon_strip icon_info"></span>Convenience fees</h4>
-					</div>
-					<div class="panel-body">
-						<div class="row">
-							<div class="col-md-12 col-sm-12 col-xs-12">
-								<table class="infoblock">
-									<tbody>
-										<tr>
-											<td class="part">
-												International Convenience Fee:
-											</td>
-											<td class="amount">
-												1.000% + AED 0.00
-											</td>
-										</tr>
-										<tr>
-											<td class="part">
-												Domestic Convenience Fee:
-											</td>
-											<td class="amount">
-												1.000% + AED 1.00
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</div> <!-- col-md-12 col-sm-12 col-xs-12 -->
-						</div> <!-- row -->
-					</div> <!-- panel-body -->
-				</div> <!-- panel -->
-			</div> <!-- panel-group -->
-
-
 			<div style="display:none;" id="init_auth_redirection"> some text here</div>
+
+			<div class="row">
+				<h3 class="mt-2 mb-3 pl-15">Payment summary</h3>
+					<div class="payment-summary-wrapper p-2">
+						<div class="payment-summary">
+							<div class="summary-item">
+								<div class="summary-label">
+									<p>
+										Description:
+									</p>
+								</div>
+								<div class="summary-value">
+									<p>My description</p>
+								</div>
+							</div>
+							<div class="summary-item">
+								<div class="summary-label">
+									<p id="currency">
+										Amount:
+									</p>
+								</div>
+								<div class="summary-value">
+									<p>AED <span id="pay_total">1,000.00</span></p>
+								</div>
+							</div>
+							<hr />
+							<h5 class="mb-2 summary-subheading">Convenience fees</h5>
+							<div class="summary-item">
+								<div class="summary-label">
+									<p>
+										International Convenience fees:
+									</p>
+								</div>
+								<div class="summary-value">
+									<p>1.000% + AED 1.00</p>
+								</div>
+							</div>
+							<div class="summary-item">
+								<div class="summary-label">
+									<p>
+										Domestic Convenience fees:
+									</p>
+								</div>
+								<div class="summary-value">
+									<p>1.000% + AED 1.00</p>
+								</div>
+							</div>
+							<hr />
+							<div class="summary-item">
+								<div class="summary-label">
+									<p class="summary-subheading">
+										Total amount:
+									</p>
+								</div>
+								<div class="summary-value summary-subheading">
+									<p>AED <span id="pay_total">1,000.00</span></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<h3 class="mt-2 mb-3">Pay with</h3>
+				</div>
+			</div>
+
 			<form action="/errors/noscript.html" method="post" name="pf2" id="pf2" role="form" onsubmit="return false;">
 				<input type="hidden" name="ivp_pc" value="AED" dp="2">
 				<input type="hidden" id="sessionID" name="session" value="be536e57160c651ea4ebb84417697">
@@ -489,6 +519,12 @@
 					<div class="panel panel-default">
 						<div class="panel-new-header">
 							<div class="panel-subheader">
+								<h4 class="panel-title mobile-only-panel-title">
+									<input type="radio" name="payby" value="card" id="pm_cc" />
+									<label for="pm_cc" class="radio-telr">
+										Credit/Debit Card
+									</label>
+								</h4>
 								<div class="card-block card-bar">
 									<span class="text-right pull-right ">
 										<label class="we-accept" style="margin-right: 7px;">WE ACCEPT</label>
@@ -496,18 +532,11 @@
 										<img src="https://uat.telrcdn.com/images/spacer.gif" class="logo_mastercard" id="logo_mastercard">
 									</span>
 								</div>
-								<h4 class="panel-title mobile-only-panel-title">
-									<input type="radio" name="payby" value="card" id="pm_cc">&nbsp;
-									<label for="pm_cc">
-										CREDIT/DEBIT CARDS
-									</label>
-								</h4>
 							</div> <!-- panel-subheader -->
 
 							<div id="collapse_card" class="panel-collapse collapse in" aria-expanded="true" style="">
 								<div class="panel-body">
 									<div class="row">
-										<div class="col-md-1 col-sm-1 col-xs-1"></div>
 										<div class="col-md-9 col-sm-9 col-xs-12">
 											<div class="form-group">
 												<div class="row">
@@ -516,7 +545,7 @@
 															for="creditCardNumber"
 															style="height: 15px;width: 200px;color: #9B9B9B;font-family: 'Arial';font-size: 12px;letter-spacing: 0;margin-top: 25px;"
 														>
-															CARD NUMBER*
+															Card Number*
 														</label>
 														<input
 															type="search"
@@ -529,7 +558,7 @@
 															id="creditCardNumber"
 															autocomplete="cc-number"
 															maxlength="21"
-															style=" border:1px solid #000;border-radius:0px;border-top-style: hidden; border-right-style: hidden; border-left-style: hidden;background-color: #ffffff;box-shadow: none; outline:none;"
+															style=" border:1px solid #ddd;border-radius:0px;border-top-style: hidden; border-right-style: hidden; border-left-style: hidden;background-color: #ffffff;box-shadow: none; outline:none;"
 															placeholder="xxxx xxxx xxxx xxxx"
 														>
 														<span class="error-block" id="new_error_text_cc-number"></span>
@@ -544,7 +573,7 @@
 														<label
 															for="creditCardValidTill"
 															style="height: 15px; width: 150px; color: #9B9B9B; font-family: 'Arial';font-size: 12px;letter-spacing: 0;line-height: 15px;margin-top: 25px;">
-															VALID TILL*
+															Valid Till*
 														</label>
 														<input
 															type="text"
@@ -556,7 +585,7 @@
 															onkeydown="return ppValidate.formatDate(this.value,event);"
 															onfocus="return ppValidate.formatDate(this.value,event);"
 															maxlength="5"
-															style="box-shadow: none;border:0;border-bottom:1px solid #000;border-radius:0px;"
+															style="box-shadow: none;border:0;border-bottom:1px solid #ddd;border-radius:0px;"
 															placeholder="MM/YY">
 														<span class="error-block" id="new_error_text_cc-expiry"></span>
 														<p style="display:none">
@@ -572,7 +601,7 @@
 														<label
 															for="cardCVV"
 															style="height: 15px;width: 150px;color: #9B9B9B;font-family: 'Arial';font-size: 12px; letter-spacing: 0; line-height: 15px;margin-top: 25px;">
-															ENTER CVV*
+															CVV*
 														</label>
 														<input
 															type="password"
@@ -587,7 +616,7 @@
 															onkeydown="return ppValidate.formatCvv(event)"
 															onkeyup="ppValidate.validCvv(this.value); return false;"
 															maxlength="4"
-															style="width: 80%;box-shadow: none;border:0;border-bottom:1px solid #000;border-radius:0px;display: inline-block;"
+															style="width: 100%;box-shadow: none;border:0;border-bottom:1px solid #ddd;border-radius:0px;display: inline-block;"
 															placeholder="123">
 														<img
 															id="cvv_info"
@@ -609,23 +638,18 @@
 									</div> <!-- row -->
 
 									<div class="row">
-										<div class="col-md-1 col-sm-1 hidden-xs"></div>
-										<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"
-												 style="position: absolute;">
-										</div>
 										<div class="col-md-8 col-sm-10 col-xs-12 btn-elements">
 											<button
-												type="submit" id="cardpaybutton" class="btn btn-success"
+												type="submit" id="cardpaybutton" class="btn btn-primary"
 												style="font-weight: bold;"
-												onclick="ppValidate.PayWith_Card(this); return false;" disabled=""
+												onclick="ppValidate.PayWith_Card(this); return false;" disabled
 											>
-												ENTER VALID CARD DETAILS
+												Enter valid card details
 											</button>
-											<input type="hidden" id="paybutton" value="ENTER VALID CARD DETAILS">
-											<input type="hidden" id="makebutton" value="Make payment">
+											<input type="hidden" id="paybutton" value="Enter valid card details">
+											<input type="hidden" id="makebutton" value="Pay Now">
 											<button
-												type="submit"
-												class="btn btn-danger"
+												class="btn btn-secondary"
 												style="font-weight: bold;"
 												onclick="ppValidate.Cancel(this); return false;">
 												Cancel
@@ -999,53 +1023,62 @@
 								});
 							}
 						</script>
-						<div class="panel-subheader" id="applepaysubheader">
-							<script type="text/javascript">
-								checkDisplay();
-							</script>
-							<div
-								class="card-block card-bar">
-								<span class="text-right pull-right">
-									<img
-										src="https://uat.telrcdn.com/images/cards/logo_applepay.svg"
-										 class="logo_applepay"
-										id="logo_applepay">
-								</span>
+						<div class="panel-new-header">
+							<div class="panel-subheader" id="applepaysubheader">
+								<script type="text/javascript">
+									checkDisplay();
+								</script>
+								<h4 class="panel-title">
+									<input type="radio" name="payby" value="applepay" id="pm_applepay">
+									<label for="pm_applepay">Apple Pay</label>
+								</h4>
+								<div
+									class="card-block card-bar">
+									<span class="text-right pull-right">
+										<img
+											src="https://uat.telrcdn.com/images/cards/logo_applepay.svg"
+											 class="logo_applepay"
+											id="logo_applepay">
+									</span>
+								</div>
 							</div>
-							<h4 class="panel-title">
-								<input type="radio" name="payby" value="applepay" id="pm_applepay">&nbsp;
-								<label for="pm_applepay">Apple Pay</label>
-							</h4>
-						</div>
-						<div id="collapse_applepay" class="panel-collapse collapse" aria-expanded="false">
-							<div class="panel-body">
-								<div class="form-group">
-									<div class="row">
-										<div class="col-md-1 col-sm-1 hidden-xs"></div>
-										<div class="col-md-10 col-sm-10 col-xs-12">
-											To pay using Apple Pay click the button below.<br>&nbsp;<br>&nbsp;
+
+							<div id="collapse_applepay" class="panel-collapse collapse" aria-expanded="false">
+								<div class="panel-body">
+									<div class="form-group">
+										<div class="row">
+											<div class="col-md-10 col-sm-10 col-xs-12">
+												To pay using Apple Pay click the button below.
+											</div>
 										</div>
-									</div>
-									<div class="row">
-										<div class="col-md-1 col-sm-1 hidden-xs"></div>
-										<div class="col-md-10 col-sm-10 col-xs-12 apple-pay">
-											<button
-												type="button"
-												id="applePay"
-												class="apple-pay-button"
-												onclick="OnApplePayClick();"
-												style="display: inline-block;"
-											>
-											<!-- TODO Add Button Text	-->
-											</button>
+										<div class="row">
+											<div class="col-md-10 col-sm-10 col-xs-12 apple-pay">
+												<button
+													type="button"
+													id="applePay"
+													class="apple-pay-button btn btn-secondary mt-2"
+													onclick="OnApplePayClick();"
+													style="display: inline-block;"
+												>
+													<img src="assets/apple-pay.png" alt="Pay with Apple Pay">
+												</button>
+											</div>
+											<div class="col-md-1 col-sm-1 hidden-xs"></div>
 										</div>
-										<div class="col-md-1 col-sm-1 hidden-xs"></div>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="panel-new-header">
 							<div class="panel-subheader">
+								<h4 class="panel-title">
+									<input
+										type="radio"
+										name="payby"
+										value="paypal"
+										id="pm_pp">
+									<label for="pm_pp">PayPal</label>
+								</h4>
 								<div>
 									<span class="text-right pull-right">
 										<img
@@ -1053,33 +1086,25 @@
 											id="logo_paypal">
 									</span>
 								</div>
-								<h4 class="panel-title">
-									<input
-										type="radio"
-										name="payby"
-										value="paypal"
-										id="pm_pp">&nbsp;
-									<label for="pm_pp">PAYPAL</label>
-								</h4>
 							</div>
 							<div id="collapse_paypal" class="panel-collapse collapse" aria-expanded="false">
 								<div class="panel-body">
 									<div class="form-group">
 										<div class="row">
-											<div class="col-md-1 col-sm-1 hidden-xs"></div>
 											<div class="col-md-10 col-sm-10 col-xs-12">
 												To pay using PayPal click the button
-												below. You will be taken to the PayPal site to complete the transaction.<br>&nbsp;<br>&nbsp;
+												below. You will be taken to the PayPal site to complete the transaction.<br>
 											</div>
 											<div class="col-md-1 col-sm-1 hidden-xs"></div>
 										</div>
 										<div class="row">
-											<div class="col-md-1 col-sm-1 hidden-xs"></div>
-											<div class="col-md-10 col-sm-10 col-xs-12">
+											<div class="col-md-10 col-sm-10 col-xs-12 mt-10">
 												<button
 													type="submit"
-													style="width:232px;height:48px;background-image: url('https://www.paypalobjects.com/webstatic/en_AU/i/buttons/btn_paywith_primary_l.png');"
-													onclick="ppValidate.PayWith_PayPal(this); return false;">
+													class="btn btn-paypal mt-2"
+													onclick="ppValidate.PayWith_PayPal(this); return false;"
+												>
+													<img src="assets/paypal-logo.png" alt="Pay with Pay Pal">
 												</button>
 											</div>
 											<div class="col-md-1 col-sm-1 hidden-xs"></div>
@@ -1089,55 +1114,50 @@
 							</div> <!-- collapse_paypal -->
 						</div>
 
-						<div class="panel-subheader">
-							<div class="card-block card-bar">
-								<span class="text-right pull-right">
-									<img src="https://uat.telrcdn.com/images/tabbysmall.png">
-								</span>
+						<div class="panel-new-header">
+							<div class="panel-subheader">
+								<h4 class="panel-title">
+									<input type="radio" name="payby" value="tabby" id="pm_tb">
+									<label for="pm_tb">Tabby</label>
+								</h4>
+								<div class="card-block card-bar">
+									<span class="text-right pull-right">
+										<img src="https://uat.telrcdn.com/images/tabbysmall.png">
+									</span>
+								</div>
 							</div>
-
-							<!--div class="hidden-xxs card-block card-bar"><span class="text-right pull-right hidden-xxs"></span></div-->
-							<h4 class="panel-title">
-								<input type="radio" name="payby" value="tabby" id="pm_pp">&nbsp;
-								<label for="pm_tb">tabby</label>
-							</h4>
-						</div>
-						<div id="collapse_tabby" class="panel-collapse collapse" aria-expanded="false">
-							<div class="panel-body">
-								<div class="form-group">
-									<div class="row" id="creditCardButton" hidden="">
-										<div class="col-md-1 col-sm-1 hidden-xs"></div>
-										<div class="col-md-10 col-sm-10 col-xs-12">
-											<input type="radio" name="tabby" id="cc" value="cc">
-											Split it (Credit Card Installments)
+							<div id="collapse_tabby" class="panel-collapse collapse" aria-expanded="false">
+								<div class="panel-body">
+									<div class="form-group">
+										<div class="row" id="creditCardButton" hidden="">
+											<div class="col-md-10 col-sm-10 col-xs-12">
+												<input type="radio" name="tabby" id="cc" value="cc">
+												Split it (Credit Card Installments)
+											</div>
+										</div>
+										<div class="row" id="installmentsButton">
+											<div class="col-md-10 col-sm-10 col-xs-12">
+												<input type="radio" name="tabby" id="ins" value="ins">
+												Split in 4 (Installments)
+											</div>
 										</div>
 									</div>
-									<div class="row" id="installmentsButton">
-										<div class="col-md-1 col-sm-1 hidden-xs"></div>
+									<div class="row" id="Errortext" hidden="">
 										<div class="col-md-10 col-sm-10 col-xs-12">
-											<input type="radio" name="tabby" id="ins" value="ins">
-											Split in 4 (Installments)
+											Tabby transaction not allowed for the Phone number/ Email ID.<br>&nbsp;
 										</div>
 									</div>
-								</div>
-								<div class="row" id="Errortext" hidden="">
-									<div class="col-md-1 col-sm-1 hidden-xs"></div>
-									<div class="col-md-10 col-sm-10 col-xs-12">
-										Tabby transaction not allowed for the Phone number/ Email ID.<br>&nbsp;
+									<div class="row" id="ErrorAmount" hidden="">
+										<div class="col-md-10 col-sm-10 col-xs-12"><br>&nbsp;
+										</div>
 									</div>
-								</div>
-								<div class="row" id="ErrorAmount" hidden="">
-									<div class="col-md-1 col-sm-1 hidden-xs"></div>
-									<div class="col-md-10 col-sm-10 col-xs-12"><br>&nbsp;
+									<div class="row">
+										<br>&nbsp;
+										<div class="col-md-10 col-sm-10 col-xs-12">
+											<button id="paynow" class="btn btn-primary" type="submit">Pay now</button>
+										</div>
+										<div class="col-md-1 col-sm-1 hidden-xs"></div>
 									</div>
-								</div>
-								<div class="row" id="paynow">
-									<br>&nbsp;
-									<div class="col-md-1 col-sm-1 hidden-xs"></div>
-									<div class="col-md-10 col-sm-10 col-xs-12">
-										<button class="button primary">Pay now</button>
-									</div>
-									<div class="col-md-1 col-sm-1 hidden-xs"></div>
 								</div>
 							</div>
 						</div>
@@ -1223,24 +1243,31 @@
 					</div> <!-- panel-default -->
 				</div> <!-- panel-group -->
 
-				<div class="row"> <!-- inner row, same level as expiry, cvv etc -->
+				<div class="row mt-2"> <!-- inner row, same level as expiry, cvv etc -->
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 15px;margin-bottom: 10px;">
 						<div class="tc_block">
 							<div class="tc_text">
-								<input id="tc_box" type="checkbox" name="term_agree" value="agree">
-									By clicking on this checkbox you agree to the
-									<a href="http://www.telr.com/" target="_blank" onclick="display_terms(); return false;"
-									>
-										terms and conditions
-									</a> of the website
+								<label class="checkbox-telr">
+									<input id="tc_box" type="checkbox" name="term_agree" value="agree" />
+									<div class="checkbox__checkmark"></div>
+									<div class="checkbox__body">
+										By clicking on this checkbox you agree to the
+										<a href="http://www.telr.com/" target="_blank" onclick="display_terms(); return false;"> terms and conditions
+										</a> of the website
+									</div>
+								</label>
 							</div>
 							<div class="tc_check"></div>
 						</div>
 						<div class="tc_block">
 							<div class="tc_text">
-								<input id="convfee_box" type="checkbox" name="convfee_agree" value="agree">
-								By clicking this checkbox, you agree to bear the convenience fee charged for this
-								transaction.
+								<label class="checkbox-telr">
+									<input id="convfee_box" type="checkbox" name="convfee_agree" value="agree" />
+									<div class="checkbox__checkmark"></div>
+									<div class="checkbox__body">
+										By clicking this checkbox, you agree to bear the convenience fee charged for this transaction.
+									</div>
+								</label>
 							</div>
 							<div class="tc_check"></div>
 						</div>
