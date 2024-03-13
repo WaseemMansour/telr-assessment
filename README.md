@@ -1,3 +1,16 @@
+
+## # Run Locally  
+Install dependencies 
+~~~bash  
+npm install
+~~~
+
+Start the server
+~~~bash  
+npm start
+~~~
+
+
 ## # Areas of improvements
 ### UI
 - Segmentation and representation of Info is weird:\ and confusing for users. 
