@@ -19,3 +19,5 @@ e.g. Total amount in header and then convenience fees? what is it?, is it includ
 - No `alt` attribute used for `<img` tags, which is essential for accessibility.
 - Not using consistent naming convention e.g. `paymentStatus` & `payment_rejected`
 - No encapsulation, variables and functions declared globally, polluting the global scope.
+- Usage of old way of making http requests i.e. XHR, instead of fetch API, or Axios, which had become the default standard, unless there's specific need to use such old technology.
+- Hardcoded JWT in the codebase is a major security issue, this should be extracted to Env variable. 
