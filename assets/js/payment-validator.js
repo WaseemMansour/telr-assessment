@@ -1,4 +1,4 @@
-import { ERROR_KEYS } from "./error-messages";
+import { ERROR_KEYS } from "./error-messages.js"
 
 export function initializePaymentValidators() {
   ppValidate.WaitForDOM();
